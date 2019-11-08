@@ -3,11 +3,18 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import GridSearchCV
 from sklearn.feature_extraction.text import TfidfVectorizer
 import pandas as pd
+import os
 
-LOCAL_TRAIN = './data/train.csv'
-LOCAL_TEXT = './data/test.csv'
-training_df = pd.read_csv(LOCAL_TRAIN)
-testing_df = pd.read_csv(LOCAL_TEST)
+WEB = 'https://raw.githubusercontent.com/ash12hub/DS-Unit-4-Sprint-1-NLP/master/module3-document-classification/data'
+LOCAL = './module3-document-classification/data'
+SOURCE = WEB
+
+print(os.listdir(LOCAL))
+TRAIN = os.path.join(SOURCE, 'train.csv')
+TEST = os.path.join(SOURCE, 'test.csv')
+print('train', TRAIN)
+training_df = pd.read_csv(TRAIN)
+testing_df = pd.read_csv(TEST)
 
 x_train = training_df['description']
 y_train = training_df['category']
